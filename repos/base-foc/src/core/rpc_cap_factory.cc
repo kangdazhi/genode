@@ -45,7 +45,7 @@ using namespace Genode;
 
 Genode::Cap_index_allocator* Genode::cap_idx_alloc()
 {
-	static Genode::Cap_index_allocator_tpl<Core_cap_index,10*1024> alloc;
+	static Genode::Cap_index_allocator_tpl<Core_cap_index, 20*1024> alloc;
 	return &alloc;
 }
 
@@ -233,11 +233,4 @@ void Genode::Capability_map::remove(Genode::Cap_index* i)
 		}
 		cap_idx_alloc()->free(i, 1);
 	}
-}
-
-
-Genode::Cap_index_allocator* cap_idx_alloc()
-{
-	static Genode::Cap_index_allocator_tpl<Core_cap_index, 20*1024> _alloc;
-	return &_alloc;
 }
